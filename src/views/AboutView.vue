@@ -1,5 +1,17 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <h1>HeaderComponent</h1>
 </template>
+
+<script>
+// import HeaderComponent from "../components/HeaderComponent";
+
+export default {
+  name: "HeaderTest",
+
+  components: {
+    // HeaderComponent,
+  },
+};
+
+console.log("// HeaderComponent-AboutView.vue");
+</script>

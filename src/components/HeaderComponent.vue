@@ -9,6 +9,7 @@ export default {
     msg: String,
   },
 };
+console.log("Header.vue");
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
