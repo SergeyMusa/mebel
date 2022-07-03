@@ -10,10 +10,14 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
 
+  <link rel="stylesheet" href="main.css">
+
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
   <!-- оптимизированная -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> --> 
+
+  <!-- <script src="http://localhost:8098"></script> -->
 
 </head>
 
@@ -23,27 +27,68 @@
     <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
       Please enable it to continue.</strong>
   </noscript>
-
+  
   <div id="app">
-    <p>{{ message }}</p>
-    <img :src="image_src">
-    {{ message2 }}
+    {{ message }}
+    <!-- {{ message2 }} -->
+    <h1 v-if="status">Истина</h1>
+    <h1 v-else>Брехня</h1>
+
+    <template @click="func" :style="{ color='red' }">
+      <button class="btn">✔</button>
+      <!-- <p :style="{font-weight: 'bold'}">'qwerty'</p> -->
+      <p>'qwerty'</p>
+    </template>
+    
+    <p :style="{ color: 'green'}">'ZXcvBB'</p>
+
+    <div v-on:click="func" v-bind:title="'Заголовок ' + status">
+      <!-- <div v-on:click="Заголовок"> -->
+      <!-- <p :class="{active: btnColor}">'ASDFG'</p> -->
+      <p :class="[btnColor ? 'red' : 'blue', 'black']">'ASDFG'</p>
+    </div>
+
+    <template>
+      <!-- <v-app dark>
+        <v-tabs fixed-tabs>
+          <v-tab to="/foo">Foo</v-tab>
+          <v-tab to="/bar">Bar</v-tab>
+        </v-tabs>
+        <router-view></router-view>
+      </v-app> -->
+    </template>
+
   </div>
 
-  <v-app dark>
-    <v-tabs fixed-tabs>
-      <v-tab to="/foo">Foo</v-tab>
-      <v-tab to="/bar">Bar</v-tab>
-    </v-tabs>
-    <router-view></router-view>
-  </v-app>
+  <hr>
+  <div id="app2" :title="message" v-show="status">
+    <div>Price: ${{ message }}</div>
+    <div>Total: ${{ message}}, {{status}} </div>
+    <div>Taxes: "---"</div>
+  </div>
+<hr>
+
+  <!-- <script>
+    let app = new Vue({
+    el: "#app",
+
+    data: {
+      message: "Hello V!",
+      message2: "-------Hello Sir!",
+      // image_src: "../src/assets/img/logo3.png",
+    },
+});
+  </script> -->
 
   <!-- адаптивно(и для андроида и айфон) юзаем лучшие форматы  -->
-      <!-- <picture>
-        <source srcset="logo.webp" type="image/webp">
-        <source srcset="logo.j2k" type="image/jp2">
-        <img :src="logo3.png" alt="logo">
-      </picture> -->
+  <div class="picture">
+    <picture >
+      <source srcset="logo.webp" type="image/webp" height="95%" width="95%">
+      <source srcset="logo.j2k" type="image/jp2" height="24%" width="40%">
+      <img :src="logo3.png" alt="logo" height="36%" width="60%">
+    </picture> 
+  </div>    
+  
   <!-- надо проверить
   Встроенную поддержку &ltpicture&gt имеют только Chrome, Opera и последняя версия Firefox, но с помощью picturefill подстраиваемся и под другие браузеры. После загрузки скрипта добавьте к &lthead&gt следующее:
 
